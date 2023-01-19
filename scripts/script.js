@@ -9,9 +9,11 @@ var progressBar = document.querySelector("#progressBar");
 var btnSeeMore1 = document.querySelector("#btn-see-more1");
 var btnSeeMore2 = document.querySelector("#btn-see-more2");
 var btnSeeMore3 = document.querySelector("#btn-see-more3");
+var btnSeeMore4 = document.querySelector("#btn-see-more4");
 var hideText1 = [...document.querySelectorAll("#hide-text1")];
 var hideText2 = [...document.querySelectorAll("#hide-text2")];
 var hideText3 = [...document.querySelectorAll("#hide-text3")];
+var hideText4 = [...document.querySelectorAll("#hide-text4")];
 
 // control inicial barra de progreso
 var porcent = 100/circles.length;
@@ -22,36 +24,23 @@ var progress = porcent;
 next.addEventListener("click",nextCard);
 prev.addEventListener("click",prevCard);
 
-// eventos click en botones "ver mas"
-btnSeeMore1.addEventListener("click",seeMoreText1);
-btnSeeMore2.addEventListener("click",seeMoreText2);
-btnSeeMore3.addEventListener("click",seeMoreText3);
+// // eventos click en botones "ver mas"
+btnSeeMore1.addEventListener("click", function () { seemore(btnSeeMore1,hideText1);});
+btnSeeMore2.addEventListener("click", function () { seemore(btnSeeMore2,hideText2);});
+btnSeeMore3.addEventListener("click", function () { seemore(btnSeeMore3,hideText3);});
+btnSeeMore4.addEventListener("click", function () { seemore(btnSeeMore4,hideText4);});
 
-// funciones para alternar texto "ver mas" y mostrar y ocultar elementos
-function seeMoreText1(){
-	hideText1.forEach(element => element.classList.toggle("show"));
-	if(btnSeeMore1.textContent=="ver mas"){
-        btnSeeMore1.textContent="ver menos";
+// funcion para ver mas de todos los botones 
+function seemore(btn,hide){
+	hide.forEach(element => element.classList.toggle("show"));
+	if(btn.textContent=="ver mas"){
+        btn.textContent="ver menos";
     }else{
-        btnSeeMore1.textContent="ver mas";
+        btn.textContent="ver mas";
     }
 }
-function seeMoreText2(){
-	hideText2.forEach(element => element.classList.toggle("show"));
-	if(btnSeeMore2.textContent=="ver mas"){
-        btnSeeMore2.textContent="ver menos";
-    }else{
-        btnSeeMore2.textContent="ver mas";
-    }
-}
-function seeMoreText3(){
-	hideText3.forEach(element => element.classList.toggle("show"));
-	if(btnSeeMore3.textContent=="ver mas"){
-        btnSeeMore3.textContent="ver menos";
-    }else{
-        btnSeeMore3.textContent="ver mas";
-    }
-}
+
+
 
 // funcion para cuando hacen click en siguiente slaider de como lo hacemos
 function nextCard(event){
